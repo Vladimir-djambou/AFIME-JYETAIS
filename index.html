@@ -648,7 +648,18 @@ dialog .close { margin-left: auto; display: block; }
     ctx.font = font(500, Math.round(ctaSize * 0.44), SANS); ctx.fillStyle = "rgba(255,255,255,0.85)";
     ctx.fillText("Revivez le closing en replay · scannez le QR code", pad, cy + ctaSize * 0.95, maxW);
     ctx.font = font(800, Math.round(ctaSize * 0.46), SANS); ctx.fillStyle = SKY;
-    ctx.fillText("afime.org", pad, cy + ctaSize * 1.8);
+    const ly = cy + ctaSize * 1.8, ls = Math.round(ctaSize * 0.46);
+    ctx.fillText("afime.org", pad, ly);
+    // pictogramme YouTube + AFIME TV
+    let lx = pad + ctx.measureText("afime.org").width + ls * 1.1;
+    ctx.fillStyle = "rgba(255,255,255,0.35)"; ctx.fillRect(lx, ly - ls * 0.85, 1.5, ls * 1.05);
+    lx += ls * 1.1;
+    const yw = ls * 1.45, yh = ls * 1.02, yy = ly - ls * 0.82;
+    ctx.fillStyle = "#FF0000"; rr(lx, yy, yw, yh, yh * 0.28); ctx.fill();
+    ctx.fillStyle = WHITE; ctx.beginPath();
+    ctx.moveTo(lx + yw * 0.4, yy + yh * 0.28); ctx.lineTo(lx + yw * 0.4, yy + yh * 0.72); ctx.lineTo(lx + yw * 0.68, yy + yh * 0.5); ctx.closePath(); ctx.fill();
+    ctx.font = font(800, ls, SANS); ctx.fillStyle = WHITE; ctx.textAlign = "left";
+    ctx.fillText("AFIME TV", lx + yw + ls * 0.45, ly);
   }
 
   function drawSquare() {
